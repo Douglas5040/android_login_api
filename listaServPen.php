@@ -43,6 +43,8 @@ if (isset($_POST['status']) && isset($_POST['matriFunc'])) {
             $response[$i]["fone1"] = $serv[$i]["celular"];
             $response[$i]["fone2"] = $serv[$i]["fone_fixo"];
             $response[$i]["id_refriCli"] = $serv[$i]["codRefriCli"];
+            $response[$i]["unique_id"] = $serv[$i]["unique_id"];
+
         }
         $array = $response;
         $respons["error"] = FALSE;

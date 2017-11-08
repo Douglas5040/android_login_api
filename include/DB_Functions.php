@@ -413,12 +413,12 @@ class DB_Functions {
         if($matriFunc == null) {
             $stmt = $this->conn->prepare("SELECT id_serv_pen, cliente, complemento, serv_pen.ender, cep, lotacionamento, statusServ,latitude, longitude,
                                             date_format(data_serv,'%d/%m/%Y') as data_serv, hora_serv,descriCliProblem, descriTecniProblem, descriCliRefrigera,
-                                             nome, tipo, celular, fone_fixo, codRefriCli FROM serv_pen,clientes where id_cli=cliente AND statusServ LIKE ? ORDER BY `serv_pen`.`data_serv` ASC");
+                                             nome, tipo, celular, fone_fixo, codRefriCli, unique_id FROM serv_pen,clientes where id_cli=cliente AND statusServ LIKE ? ORDER BY `serv_pen`.`data_serv` ASC");
             $stmt->bind_param("s", $status);
         }else{
             $stmt = $this->conn->prepare("SELECT id_serv_pen, cliente, complemento, serv_pen.ender, cep, lotacionamento, statusServ,latitude, longitude,
                                             date_format(data_serv,'%d/%m/%Y') as data_serv, hora_serv,descriCliProblem, descriTecniProblem, descriCliRefrigera,
-                                             nome, tipo, celular, fone_fixo, codRefriCli FROM serv_pen,clientes where id_cli=cliente AND statusServ LIKE ? AND MatriFuncTec LIKE ? ORDER BY `serv_pen`.`data_serv` ASC");
+                                             nome, tipo, celular, fone_fixo, codRefriCli, unique_id FROM serv_pen,clientes where id_cli=cliente AND statusServ LIKE ? AND MatriFuncTec LIKE ? ORDER BY `serv_pen`.`data_serv` ASC");
             $stmt->bind_param("ss", $status,$matriFunc);
         }
         if($stmt->execute()) {

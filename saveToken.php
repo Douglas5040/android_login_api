@@ -11,14 +11,15 @@ $db = new DB_Functions();
 // json response array
 $response = array("error" => FALSE);
 
-if (isset($_POST['token'])) {
+if (isset($_POST['id_cli']) && isset($_POST['token'])) {
 
     // receiving the post params
     $token = $_POST['token'];
+    $id_cli = $_POST['token'];
 
 
         // create a new user
-        $retorno = $db->saveToken($token);
+        $retorno = $db->saveToken($token, $id_cli);
         if ($retorno) {
             // user stored successfully
             $response["error"] = FALSE;
